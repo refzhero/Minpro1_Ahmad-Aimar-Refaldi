@@ -1,0 +1,101 @@
+data_tim = [
+    ("ONIC", 0),
+    ("Alter Ego", 0),
+    ("Team Liquid PH", 0),
+    ("Aurora Gaming PH", 0),
+    ("Selangor Red Giants", 0),
+    ("CG Esports", 0)
+]
+
+jumlah_data = 6
+
+while True:
+    print("DATA POIN TIM M7")
+    print("1. Tambah tim")
+    print("2. Tampilkan data")
+    print("3. Ubah poin")
+    print("4. Hapus tim")
+    print("5. Keluar")
+
+    pilihan = input("pilih menu: ")
+
+    if pilihan == "1":
+        nama = input("masukkan nama tim: ")
+        poin = int(input("masukkan poin: "))
+
+        data_tim.append((nama, poin))
+        jumlah_data += 1
+
+        print("tim berhasil ditambahkan.")
+
+    elif pilihan == "2":
+        print("DAFTAR TIM M7")
+
+        i = 0
+        while i < jumlah_data:
+            print(i + 1, ".", data_tim[i][0], "-", data_tim[i][1], "poin")
+            i += 1
+
+    elif pilihan == "3":
+        nama = input("masukkan nama tim: ")
+
+        i = 0
+        ditemukan = False
+
+        while i < jumlah_data:
+            if data_tim[i][0] == nama:
+                poin_baru = int(input("masukkan poin baru: "))
+                data_tim[i] = (nama, poin_baru)
+                ditemukan = True
+                print("poin berhasil diubah.")
+                break
+
+            i += 1
+
+        if ditemukan == False:
+            print("tim tidak ditemukan.")
+
+    elif pilihan == "4":
+        nama = input("masukkan nama tim: ")
+
+        i = 0
+        ditemukan = False
+
+        while i < jumlah_data:
+            if data_tim[i][0] == nama:
+                data_tim.pop(i)
+                jumlah_data -= 1
+                ditemukan = True
+                print("tim berhasil dihapus.")
+                break
+
+            i += 1
+
+        if ditemukan == False:
+            print("tim tidak ditemukan.")
+
+    elif pilihan == "5":
+        print("HASIL AKHIR M7")
+
+        if jumlah_data == 0:
+            print("tidak ada data tim.")
+        else:
+            i = 0
+            tim_menang = data_tim[0][0]
+            poin_tertinggi = data_tim[0][1]
+
+            while i < jumlah_data:
+                if data_tim[i][1] > poin_tertinggi:
+                    tim_menang = data_tim[i][0]
+                    poin_tertinggi = data_tim[i][1]
+
+                i += 1
+
+            print("pemenang:", tim_menang)
+            print("poin:", poin_tertinggi)
+        
+        print("program selesai.")
+        break
+
+    else:
+        print("pilihan tidak tersedia.")
